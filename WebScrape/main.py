@@ -1,4 +1,5 @@
-from selenium import webdriver
+import selenium.webdriver as webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
@@ -11,6 +12,17 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 driver.get("http://nutrition.myubcard.com/NetNutrition/1")
 driver.maximize_window()
 
-element = driver.find_element_by_xpath('//*[@id="sideUnitPanel"]/div[2]/table/tbody/tr[7]/td/a')
+driver.implicitly_wait(10)
+element = driver.find_element(By.XPATH, '/html/body/div[1]/div[2]/form/div[1]/div[1]/div[2]/table/tbody/tr[7]/td/a')
+
+element.click()
+
+driver.implicitly_wait(10)
+element = driver.find_element(By.XPATH, '/html/body/div[1]/div[2]/form/div[2]/div[3]/section/table/tbody/tr[1]/td[1]/a')
+
+element.click()
+
+driver.implicitly_wait(10)
+element = driver.find_element(By.XPATH, '/html/body/div[1]/div[2]/form/div[2]/div[4]/section/div[2]/div[2]/table/tbody/tr[1]/td[1]/table/tbody/tr[2]/td/table/tbody/tr/td[2]/a')
 
 element.click()
