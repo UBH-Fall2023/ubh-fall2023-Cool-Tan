@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
+import time
 
 menu = {
 
@@ -43,6 +44,18 @@ element = driver.find_element(By.XPATH, '/html/body/div[1]/div[2]/form/div[2]/di
 element.click()
 
 table = driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/form/div[2]/div[6]/section/table")
+
+def get_check_box():
+    rows = driver.find_elements(By.CSS_SELECTOR, "td.cbo_nn_itemCheckBox")
+
+    for row in rows:
+        # Find the checkbox element within each row
+        checkbox = row.find_element(By.CSS_SELECTOR, "input[type='checkbox']")
+
+        # Check the checkbox if it's not already checked
+        if not checkbox.is_selected():
+            checkbox.click()
+
 def get_primary_row():
     element = table.find_elements(By.CLASS_NAME, "cbo_nn_itemPrimaryRow")
     for row in element:
@@ -55,6 +68,10 @@ def get_primary_row():
 
         nutrition["Serving Size"] = cells[2].text
         menu[cells[1].text] = nutrition
+
+        #cells[0].click()
+        # cells[0].find_element(By.XPATH, '/html/body/div[1]/div[2]/form/div[2]/div[6]/section/table/tbody/tr[3]/td[1]/input').click()
+
 
 
 def get_alternate_row():
@@ -71,7 +88,18 @@ def get_alternate_row():
         menu[cells[1].text] = nutrition
 
 
-get_primary_row()
-get_alternate_row()
+# get_primary_row()
+# get_alternate_row()
+
+get_check_box()
+
+#click_add_items = driver.find_element(By.XPATH, '/html/body/div[1]/div[2]/form/div[2]/div[6]/section/div[4]/table/tbody/tr/td[3]/button')
+# click_add_items.click()
+
+click_meal_nutrition = driver.find_element(By.XPATH, '/html/body/div[1]/div[2]/form/div[2]/div[6]/section/div[3]/table/tbody/tr/td[2]/button')
+click_meal_nutrition.click()
+
+def search_menu_table():
+    return
 
 print(menu)
