@@ -8,9 +8,6 @@ menu = {
 
 }
 
-nutrition = {
-
-}
 
 options = Options()
 options.add_experimental_option("detach", True)
@@ -47,18 +44,28 @@ element.click()
 
 table = driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/form/div[2]/div[6]/section/table")
 def get_primary_row():
-    rows = table.find_elements(By.CLASS_NAME, "cbo_nn_itemPrimaryRow")
-    for row in rows:
+    element = table.find_elements(By.CLASS_NAME, "cbo_nn_itemPrimaryRow")
+    for row in element:
         cells = row.find_elements(By.TAG_NAME, "td")
+
         # print(cells[1].text + '     |     SERVING SIZE : ' + cells[2].text)
+        nutrition = {
+
+        }
+
         nutrition["Serving Size"] = cells[2].text
         menu[cells[1].text] = nutrition
+
 
 def get_alternate_row():
     rows_2 = table.find_elements(By.CLASS_NAME, "cbo_nn_itemAlternateRow")
     # print(rows_2)
     for row in rows_2:
         cells = row.find_elements(By.TAG_NAME, "td")
+
+        nutrition = {
+
+        }
 
         nutrition["Serving Size"] = cells[2].text
         menu[cells[1].text] = nutrition
