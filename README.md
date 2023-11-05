@@ -18,7 +18,7 @@ The Pipfile file contains the required versions of the libraries, including:
     pandas
 
 # 2. Obtain an OpenAI API Key
-To use the OpenAI GPT-3 model, you need to create an OpenAI account and generate an API Key. We do not include our API Key in the project for security reasons.
+To use the OpenAI GPT model, you need to create an OpenAI account and generate an API Key. We do not include our API Key in the project for security reasons.
 
 # 3. Set Up Your API Key
 Create a text file in the chat_gpt_interface folder and paste your OpenAI API Key into that file.
