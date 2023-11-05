@@ -162,8 +162,8 @@ def stringify():
         values = menu.get(key)
         for value in values.keys():
             response += ' ' + value + ' : '
-            for nutrient in values.get(value):
-                response += ' ' + nutrient + ', '
+
+            response += ' ' + values.get(value) + ', '
 
         response += ' )'
 
