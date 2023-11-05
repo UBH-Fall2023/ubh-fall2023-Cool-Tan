@@ -9,7 +9,9 @@ menu = {
 
 }
 
+header_array = []
 
+hi = 'hi'
 options = Options()
 options.add_experimental_option("detach", True)
 
@@ -99,7 +101,52 @@ get_check_box()
 click_meal_nutrition = driver.find_element(By.XPATH, '/html/body/div[1]/div[2]/form/div[2]/div[6]/section/div[3]/table/tbody/tr/td[2]/button')
 click_meal_nutrition.click()
 
+
+
 def search_menu_table():
-    return
+    menu_table = driver.find_element(By.XPATH, '/html/body/div[1]/div[4]/div/div[2]/table')
+
+    header_items = menu_table.find_elements(By.CLASS_NAME, 'cbo_nn_NutritionGridHeaderText')
+
+    for header in header_items:
+        if header.text.find('%') == -1:
+            header_array.append(header.text)
+
+    grid_row = menu_table.find_elements(By.CLASS_NAME, 'cbo_nn_NutritionGridDetailRow')
+
+    for item in grid_row:
+        food_name = item.find_element(By.CLASS_NAME, 'cbo_nn_NutritionGridItemName')
+        #print(food_name.text)
+
+        values = item.find_elements(By.CLASS_NAME, 'cbo_nn_NutritionGridData')
+        values_array = []
+
+        nutrition = {
+
+        }
+
+        for i in range(len(values)):
+            nutrition[header_array[i]] = values[i].text
+
+        menu[food_name.text] = nutrition
+
+        #print(header_array)
+        #print(values_array)
+
+
+    #food_rows = menu_table.find_elements(By.CLASS_NAME, 'cbo_nn_NutritionGridData')
+    #nutrition_rows = menu_table.find_elements(By.CLASS_NAME, 'cbo_nn_NutritionGridData align-middle')
+
+    #print(nutrition_rows)
+
+    #for nutrition in nutrition_rows:
+     #   print(nutrition.text)
+
+    #for food in food_rows:
+     #   print(food.text)
+
+
+
+search_menu_table()
 
 print(menu)
