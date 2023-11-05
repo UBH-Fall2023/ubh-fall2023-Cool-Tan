@@ -149,4 +149,27 @@ def search_menu_table():
 
 search_menu_table()
 
-print(menu)
+#print(menu)
+
+def stringify():
+    response = ''
+
+    for key in menu.keys():
+        #print(key)
+        response = response + ' | ' + key + ' : '
+        response += ' ('
+
+        values = menu.get(key)
+        for value in values.keys():
+            response += ' ' + value + ' : '
+            for nutrient in values.get(value):
+                response += ' ' + nutrient + ', '
+
+        response += ' )'
+
+
+
+    return response
+
+#print(menu)
+print(stringify())
