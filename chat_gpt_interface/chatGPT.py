@@ -10,11 +10,11 @@ def starterRequest():
     # openai.api_key = open("chatGPTKEY", 'r').read().strip('\n')
     userPreference = userIO.userQuery.takeUserPreference()
     ##foods = getFoodDictionary.toString
-    foods = "Pizza (Calores:300,Sodium 10%), Cheeseburger(Calores:500,Sodium 15%), tomato soup(Calores:200,Sodium 20%), french fries(Calores:300,Sodium 18%), salad(Calores:200,Sodium 0%), greek yogurt(Calores:300,Sodium 0%)"
+    #foods = "Pizza (Calores:300,Sodium 10%), Cheeseburger(Calores:500,Sodium 15%), tomato soup(Calores:200,Sodium 20%), french fries(Calores:300,Sodium 18%), salad(Calores:200,Sodium 0%), greek yogurt(Calores:300,Sodium 0%)"
     foods = WebScrape.main.init()
     print(foods)
     response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4",
         messages=[
             {"role": "system", "content": "You are a nutritionist that is making a meal plan."},
             {"role": "user",
@@ -30,7 +30,7 @@ def modifyMenu():
     if (userPreference == -1):
         return -1
     response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4",
         messages=[
             {"role": "system", "content": "You are a nutritionist that is making a meal plan."},
             {"role": "user",
