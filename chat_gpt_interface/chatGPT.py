@@ -31,10 +31,8 @@ def modifyMenu():
         messages=[
             {"role": "system", "content": "You are a nutritionist that is making a meal plan."},
             {"role": "user",
-             "content": "Please modify your previous sugested meal with these additional preferences: " + userPreference}
+             "content": "Please modify your previous sugested meal with these additional preferences: " + userPreference+". You must respond with the names of the food along with the total nutrion value which will be given."}
         ]
     )
     print(response['choices'][0]['message']['content'])
     return 0
-
-starterRequest()
