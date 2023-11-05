@@ -1,5 +1,6 @@
 import openai
 
+import WebScrape.main
 import userIO.userQuery
 
 openai.api_key = open("chat_gpt_interface/chatGPTKEY", 'r').read().strip('\n')
@@ -8,8 +9,8 @@ openai.api_key = open("chat_gpt_interface/chatGPTKEY", 'r').read().strip('\n')
 def starterRequest():
     # openai.api_key = open("chatGPTKEY", 'r').read().strip('\n')
     userPreference = userIO.userQuery.takeUserPreference()
-    ##foods = getFoodDictionary.toString
-    foods = "Pizza (Calores:300,Sodium 10%), Cheeseburger(Calores:500,Sodium 15%), tomato soup(Calores:200,Sodium 20%), french fries(Calores:300,Sodium 18%), salad(Calores:200,Sodium 0%), greek yogurt(Calores:300,Sodium 0%)"
+    foods = WebScrape.main.stringify()
+    ##foods = "Pizza (Calores:300,Sodium 10%), Cheeseburger(Calores:500,Sodium 15%), tomato soup(Calores:200,Sodium 20%), french fries(Calores:300,Sodium 18%), salad(Calores:200,Sodium 0%), greek yogurt(Calores:300,Sodium 0%)"
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
