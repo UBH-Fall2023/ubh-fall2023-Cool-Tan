@@ -60,7 +60,7 @@ def init():
     output = stringify(menu)
 
     return output
-    print(output)
+    #print(output)
 
 def get_check_box(driver):
     rows = driver.find_elements(By.CSS_SELECTOR, "td.cbo_nn_itemCheckBox")

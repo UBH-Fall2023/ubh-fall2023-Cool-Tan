@@ -12,7 +12,7 @@ def starterRequest():
     ##foods = getFoodDictionary.toString
     #foods = "Pizza (Calores:300,Sodium 10%), Cheeseburger(Calores:500,Sodium 15%), tomato soup(Calores:200,Sodium 20%), french fries(Calores:300,Sodium 18%), salad(Calores:200,Sodium 0%), greek yogurt(Calores:300,Sodium 0%)"
     foods = WebScrape.main.init()
-    print(foods)
+    #print(foods)
     response = openai.ChatCompletion.create(
         model="gpt-4",
         messages=[
