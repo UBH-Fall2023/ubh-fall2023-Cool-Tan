@@ -178,5 +178,3 @@ def stringify(menu):
     return response
 
 #print(menu)
-
-init()
