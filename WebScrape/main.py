@@ -11,6 +11,7 @@ menu = {
 
 header_array = []
 
+hi = 'hi'
 options = Options()
 options.add_experimental_option("detach", True)
 
